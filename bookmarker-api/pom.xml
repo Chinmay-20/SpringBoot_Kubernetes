@@ -94,7 +94,7 @@
 				<configuration>
 					<image>
 						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
-						<name>chinmayk/bookmarker-api</name>
+						<name>ck9913/bookmarker-api</name>
 					</image>
 					<excludes>
 						<exclude>
