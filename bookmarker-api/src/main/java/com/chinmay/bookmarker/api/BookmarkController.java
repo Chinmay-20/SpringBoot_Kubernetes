@@ -4,14 +4,11 @@
 
 package com.chinmay.bookmarker.api;
 
-import com.chinmay.bookmarker.domain.Bookmark;
-import com.chinmay.bookmarker.domain.BookmarkService;
-import com.chinmay.bookmarker.domain.BookmarksDTO;
+import com.chinmay.bookmarker.domain.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +19,31 @@ public class BookmarkController {
     private final BookmarkService bookmarkService;
 
     @GetMapping
-    public BookmarksDTO getBookmarks(@RequestParam(name="page", defaultValue = "1") Integer page){
-        return bookmarkService.getBookmarks(page);
+    public BookmarksDTO getBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                     @RequestParam(name = "query", defaultValue = "") String query){
+
+        if (query==null || query.trim().length() == 0){
+            return bookmarkService.getBookmarks(page);
+        }
+        return bookmarkService.searchBookmarks(query, page);
+    }
+
+    // after successful creation we want to return success code 201. by default after successful creation spring boot return success code 200
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED) //for status code 201
+    public BookmarkDTO createBookmark(@RequestBody @Valid CreateBookmarkRequest request) {
+        // take request payload and bind to object. we cannot bind to bookmark entity (spring data jpa entity)
+        // because it is not a good idea to tie response to data base structure, we may change database structure
+        // BookmarkDTO is not tied to database structure, but it contains whole bookmark data,
+        // and to create resource we dont require complete data, we only require URL
+        // using same bookmark dto for creation and updation may cause confusion while validating data
+        // id is not useful while creating while it is required for validating
+        // requestbody and valid to convert request according to creatbookmarkrequest and validate it
+        // explaination for return type as well
+
+        return bookmarkService.createBookmark(request);
+        // it gives error and whole implementation details if reponse is error may occur if title or url not specified in request body
+        // use problem spring web plugin to overcome this issue and return readable error message. tried but didn't worked. see another video mentioned in part 10
+
     }
 }

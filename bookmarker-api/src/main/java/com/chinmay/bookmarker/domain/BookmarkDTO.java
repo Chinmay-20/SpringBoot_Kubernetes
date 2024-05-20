@@ -10,7 +10,7 @@ import java.time.Instant;
 
 @Setter
 @Getter
-@NoArgsConstructor
+//@NoArgsConstructor removed for spring data jpa and also changed constructor in BookmarkMapper
 @AllArgsConstructor
 public class BookmarkDTO {
     private Long id;
