@@ -11,7 +11,7 @@ jobs:
     name: Build bookmarker-api
     runs-on: ubuntu-latest # you can specify ubuntu version
     defaults:
-      runs:
+      run:
         working-directory: ./bookmarker-api
     steps:
       - uses: actions/checkout@v4 # checks out code from github
