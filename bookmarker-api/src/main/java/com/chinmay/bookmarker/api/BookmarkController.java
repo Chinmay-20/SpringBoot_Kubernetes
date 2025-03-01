@@ -7,20 +7,29 @@ package com.chinmay.bookmarker.api;
 import com.chinmay.bookmarker.domain.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+// import java.util.List;
 
 @RestController
-@RequestMapping("/api/bookmarks")
+@RequestMapping("/api/bookmarks") // common prefix is
 @RequiredArgsConstructor
 public class BookmarkController {
     private final BookmarkService bookmarkService;
 
+
+    // Request param is for adding pagination support
+
     @GetMapping
     public BookmarksDTO getBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page,
                                      @RequestParam(name = "query", defaultValue = "") String query){
+        
+        
 
         if (query==null || query.trim().length() == 0){
             return bookmarkService.getBookmarks(page);

@@ -1,9 +1,9 @@
 package com.chinmay.bookmarker.domain;
 
-import jakarta.persistence.*;
+// import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+// import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
@@ -18,3 +18,5 @@ public class BookmarkDTO {
     private String url;
     private Instant createdAt;
 }
+
+// class based DTO projections 

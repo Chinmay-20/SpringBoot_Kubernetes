@@ -1,6 +1,9 @@
-FROM eclipse-temurin:17-jre-focal
+# base image  
+FROM eclipse-temurin:17-jre-focal 
 
+# adding spring boot fat jar  
 ADD target/*.jar app.jar
 RUN sh -c 'touch /app.jar'
 EXPOSE 8080
+# using java -jar to start application
 ENTRYPOINT ["sh", "-c", "java -jar /app.jar"]

@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.awt.print.Book;
+// import java.awt.print.Book;
 
 public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
 

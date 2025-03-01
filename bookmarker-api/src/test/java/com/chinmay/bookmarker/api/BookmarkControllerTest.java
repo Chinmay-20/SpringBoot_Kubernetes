@@ -31,15 +31,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
+  
 //spring-boot-starter-test in pm.xml automatically pulls the junit, json path, mockito and other commonly used dependancy
 // we use for writing an integration test starting spring boot application and then running the test@
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-//@TestPropertySource( properties = {
+// @TestPropertySource( properties = {
 //        "spring.datasource.url=jdbc:tc:postgresql:14-alpine:///demo"
-//})
+// })
 class BookmarkControllerTest {
+    
+    // to fire api call
     @Autowired
     private MockMvc mvc;
 

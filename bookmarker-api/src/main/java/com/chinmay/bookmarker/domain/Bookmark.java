@@ -10,6 +10,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "bookmarks")
+// generate setters and getters using Lombok
 @Setter
 @Getter
 @NoArgsConstructor
@@ -26,3 +27,10 @@ public class  Bookmark {
     private String url;
     private Instant createdAt;
 }
+
+// # used hibernates auto table generation support 
+// # not a good idea to manage database schema in production grid
+// we have a property title which maps to column title in database 
+// if we change title to something else (name) and start application again it will not rename title to name, it will create a new column name
+// so use database migration tool to use in business applications
+// in spring boot there are two widely used flyway and liquibase  we will use flyway

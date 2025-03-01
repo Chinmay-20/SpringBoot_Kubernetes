@@ -6,4 +6,4 @@ create table bookmarks (
     url varchar(255) not null,
     created_at timestamp,
     primary key (id)
-);
+); 
