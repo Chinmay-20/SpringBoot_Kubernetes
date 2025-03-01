@@ -99,7 +99,6 @@ A GitHub Actions workflow is configured in `.github/workflows/build.yml`. It per
 
 ## Tools
 - **Kubernetes GUI**: Lens for managing Kubernetes clusters.
-- **PostgreSQL for Testing**: Testcontainers spin up a PostgreSQL database for integration tests.
 
 ## Next Steps
 - Enhance search functionality
@@ -110,8 +109,6 @@ A GitHub Actions workflow is configured in `.github/workflows/build.yml`. It per
 - Ensure tests are written for all new features.
 - Use feature branches for development.
 
-## License
-This project is licensed under the MIT License.
 
 ---
 
